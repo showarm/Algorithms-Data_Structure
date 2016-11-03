@@ -11,6 +11,7 @@ java中集合的算法：对List的排序／查找，二分／最值／反转／
 都在java.util.Collections里，read the fucking SC.
 https://www.tutorialspoint.com/java/java_collection_algorithms.htm
 2  Stack／Queue：特殊的List
+利用LinkedList可以轻松实现二者。
 
 3 哈希表（Hash table） ： 散列 ／key value
 
