@@ -11,4 +11,14 @@ public class Utils {
         arr[j] = temp;
     }
 
+    public static void logArray(String tag , int[] arr){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(String.valueOf(arr[i]));
+            sb.append(",");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        System.out.printf("%s : %s",tag,sb.toString());
+    }
+
 }
