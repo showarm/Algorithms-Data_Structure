@@ -16,15 +16,15 @@ public class QuickSort {
 
     //一次划分
     public static int partition(int[] arr, int left, int right) {
-        int pivotKey = arr[left];
-        int pivotPointer = left;
+        int pivotKey = arr[left]; //指定第一个数为比较关键字
+        int pivotPointer = left; //当前指针索引
 
         while(left < right) {
-            while(left < right && arr[right] >= pivotKey)
-                right --;
-            while(left < right && arr[left] <= pivotKey)
-                left ++;
-            swap(arr, left, right); //把大的交换到右边，把小的交换到左边。
+            while(left < right && arr[right] >= pivotKey) right --; //arr[right]大于关键字了，指针左移
+            while(left < right && arr[left] <= pivotKey) left ++;
+
+            //此时右边指针指向的arr[right]小于关键字，左边的arr[left]大于关键字，正好交换它们
+            swap(arr, left, right);
         }
         swap(arr, pivotPointer, left); //最后把pivot交换到中间
         return left;
