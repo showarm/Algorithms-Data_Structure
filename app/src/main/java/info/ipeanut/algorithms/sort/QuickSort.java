@@ -10,6 +10,9 @@ import info.ipeanut.algorithms.Utils;
  *
  0.目的：使数列从左到右是按由小到大排列的
  3.表现最好的排序算法。 快速排序是不稳定的,平均时间复杂度是O(nlgn)
+
+ http://www.imooc.com/article/16141
+
  *
  */
 public class QuickSort {
