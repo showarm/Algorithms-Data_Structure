@@ -10,3 +10,5 @@ for (int i = 0; i < arr.length - 1; i++) {}
 ```
 for (int i = arr.length; i >0 ; i--) {}
 ```
+
+http://www.jianshu.com/p/ae97c3ceea8d
