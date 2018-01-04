@@ -158,7 +158,9 @@ class LinkedHashMap<K,V>
 
 
 #### TreeMap
-红黑树
+红黑树 
+
+我们用的最多的是HashMap,在Map 中插入、删除和定位元素，HashMap 是最好的选择。但如果您要按自然顺序或自定义顺序遍历键，那么TreeMap会更好。如果需要输出的顺序和输入的相同,那么用LinkedHashMap
 
 #### 与ArrayMap的比较
 

@@ -1,4 +1,5 @@
-###### 为什么重写equals方法必须也重写hashCode方法？
+# Object的8个方法
+ 为什么重写equals方法必须也重写hashCode方法？
 == 比较对象的地址
 
 equals计较对象的内容，是判断两个对象相等的标尺。
@@ -8,7 +9,7 @@ equals计较对象的内容，是判断两个对象相等的标尺。
 hasCode()不相等 => equals（）不相等 <=> 两个对象不相等
 
 
-* 内部类   
+* 接口 抽象类  内部类 的对比  
 
 http://www.cnblogs.com/chenssy/p/3388487.html  
 
@@ -23,4 +24,8 @@ http://www.cnblogs.com/chenssy/p/3388487.html
       5、内部类提供了更好的封装，除了该外围类，其他类都不能访问。
 
 非静态内部类在编译完成之后会隐含地保存着一个引用，该引用是指向创建它的外部类，但是静态内部类却没有
+
+volatile  transient
+
+
 
