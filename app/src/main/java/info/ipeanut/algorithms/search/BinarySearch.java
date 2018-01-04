@@ -60,5 +60,8 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 所以while循环的条件正好是递归的边界条件的逆。
+     */
 
 }
