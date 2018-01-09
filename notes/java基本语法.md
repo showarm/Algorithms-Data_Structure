@@ -1,3 +1,5 @@
+https://github.com/Mr-YangCheng/ForAndroidInterview/tree/master/java
+
 # Object的8个方法
  为什么重写equals方法必须也重写hashCode方法？
 == 比较对象的地址
@@ -29,3 +31,18 @@ volatile  transient
 
 
 
+String 是不可变的对象，每次改变都等同于生成了一个新的 String 对象。
+
+stringbuffer每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，具有字符串缓冲区。
+
+stringbuilder，非同步，优先使用它。
+
+
+
+Error 和 Exception的区别 http://www.tuicool.com/articles/UNvyqae 
+
+Throwable派生出两大类：Error和Exception。
+
+Error是程序中的严重错误，不应该用try…catch
+
+Exception分两类：Checked Exception和Unchecked Exception(RuntimeException)。

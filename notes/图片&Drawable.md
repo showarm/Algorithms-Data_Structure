@@ -25,6 +25,16 @@ LruCache缓存：不在使用中的图片使用LruCache来进行缓存。LinkedH
 
 Glide用到了大量的抽象工厂类
 
+## LruCache + DiskLruCache
+http://blog.csdn.net/boyupeng/article/details/47127605
+
+
+## Bitmap 
+内存 http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=498&extra=page%3D3 
+
+取决于：色彩格式／存放的资源目录／手机的屏幕密度
+
+大图小用用采样，小图大用用矩阵
 
 ## Drawable  
 
@@ -37,26 +47,23 @@ canvas.drawPath(path, paint);//然后再往上画点啥
 https://github.com/mzule/FantasySlide/blob/master/library/src/main/java/com/github/mzule/fantasyslide/SideBarBgView.java 
 
 
-paint.setShader(createShader());
-new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+圆形图片：
 
-## Matrix
+叠加模式：mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 
-android中拥有Matrix属性的API列表（或者说，其变换是操作Matrix的API）：
+路径裁剪画布：path.addCircle();canvas.clipPath(path);
 
-最终的目的地：着色器／画布
+着色器：
+paint.setShader(new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)); 
+c.drawCircle(radius,radius, radius, paint); //用图片着色器画了一个圆
 
-android.graphics.Shader    画笔的颜色着色器或图像印章 #setLocalMatrix(Matrix localM)  ..
-
-android.graphics.Canvas   画布#setMatrix(Matrix matrix)哈哈，明显不
-
-android.graphics.Camera   #applyToCanvas(Canvas canvas) camera依附于画布，它让画布进行矩阵变换
-
-android.view.View  View的各种属性变换，大小位置scroll之类，都是在进行Matrix操作,它其实是canvas的变换
-
-android.widget.ImageView  #setImageMatrix(Matrix matrix)各种ScaleType就是在操作这个mDrawMatrix，画布变换。
-
-android.animation.Transformation  所有view动画都在操作Transformation的Matrix，最后这个矩阵作用到哪了？view
+自定义drawable  http://www.jianshu.com/p/f3abe913c07f  
 
 
+## 压缩
+ https://www.tuicool.com/articles/FNVzMbj 
 
+
+## 图片内存优化
+https://www.jianshu.com/p/5bb8c01e2bc7
+将背景图片通过SurfaceView来绘制，这样相当于是在非UI线程绘制，不会影响到UI线程做其它事情：

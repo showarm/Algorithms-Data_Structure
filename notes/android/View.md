@@ -236,7 +236,17 @@ draw(Canvas canvas)／／参数是父View传入，View就在这个canvas画布�
 OnClickListener／OnLongClickListener 这都是从onTouchEvent动作中检测出来的，mPendingCheckForTap
 OnTouchListener
 相关set方法
-
+```
+public boolean dispatchTouchEvent(MotionEvent ev){
+    boolean consume = false;
+    if (onInterceptTouchEvent(ev)) {  //ViewGroup有,View没有
+        consume = onTouchEvent(ev);
+    }else{
+        consume = child.dispatchTouchEvent(ev);
+    }
+    return consume;
+}
+```
 简单来说，系统通过onTouchEvent给你触摸数据
 
 
@@ -307,7 +317,7 @@ http://blog.csdn.net/column/details/liuguilin.html
 == View-demo
 https://github.com/dudu90/FreshDownloadView 
 https://github.com/DmitriyZaitsev/RadarChartView 
-
+https://www.tuicool.com/articles/VBZ3qea
 
 组合View
 
@@ -356,3 +366,15 @@ arcTo(RectF oval, float startAngle, float sweepAngle, boolean forceMoveTo)
 水平轴正方向是0度，正下南方向是90度，sweepAngle正数按顺时针方向计算，forceMoveTo把画笔拖过去还是跳过去
 
 
+View刷新机制？
+
+由ViewRootImpl对象的performTraversals()方法,遍历View树,调用draw()方法发起绘制该View树，值得注意的是每次发起绘图时，并不会重新绘制每个View树的视图，而只会重新绘制那些“需要重绘”的视图，View类内部变量包含了一个标志位DRAWN，当该视图需要重绘时，就会为该View添加该标志位。
+
+
+LinearLayout对比RelativeLayout？
+
+1.RelativeLayout会让子View调用2次onMeasure，LinearLayout 在有weight时，也会调用子View2次onMeasure 
+
+2.RelativeLayout的子View如果高度和RelativeLayout不同，则会引发效率问题，当子View很复杂时，这个问题会更加严重。如果可以，尽量使用padding代替margin。 3.在不影响层级深度的情况下,使用LinearLayout和FrameLayout而不是RelativeLayout。 最后再思考一下文章开头那个矛盾的问题，为什么Google给开发者默认新建了个RelativeLayout，而自己却在DecorView中用了个LinearLayout。因为DecorView的层级深度是已知而且固定的，上面一个标题栏，下面一个内容栏。采用RelativeLayout并不会降低层级深度，所以此时在根节点上用LinearLayout是效率最高的。而之所以给开发者默认新建了个RelativeLayout是希望开发者能采用尽量少的View层级来表达布局以实现性能最优，因为复杂的View嵌套对性能的影响会更大一些。
+
+﻿

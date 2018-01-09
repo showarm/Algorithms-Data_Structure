@@ -156,6 +156,11 @@ class LinkedHashMap<K,V>
 * sun.net.www.http.KeepAliveCache extends HashMap<KeepAliveKey, ClientVector> 
 缓存
 
+#### LRU算法
+最近最少使用  http://www.tuicool.com/articles/6NrQZjz 
+循环链表,
+java.util.LinkedHashMap同时解决了元素的快速访问与缓存淘汰问题。
+链表的节点先后顺序决定了淘汰谁的问题，hash解决了快速访问的问题。
 
 #### TreeMap
 红黑树 
