@@ -1,4 +1,9 @@
 https://github.com/Mr-YangCheng/ForAndroidInterview/tree/master/java
+https://github.com/francistao/LearningNotes/tree/master/Part1/Android
+https://github.com/singwhatiwanna/android-art-res
+https://github.com/YoungPeanut/ApiDemos
+https://www.jianshu.com/u/f9fbc7a39b36
+http://blog.csdn.net/harvic880925/article/details/50995268
 
 # Object的8个方法
  为什么重写equals方法必须也重写hashCode方法？

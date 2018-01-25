@@ -1,4 +1,6 @@
 
+https://www.jianshu.com/p/a5d12ca4a86f 从framework分析AIDL生成文件
+
 ###  AIDL
 简化的Binder
 https://github.com/YoungPeanut/Android_BinderDemo
@@ -9,6 +11,8 @@ https://github.com/YoungPeanut/Android_BinderDemo
 
 ### Binder机制 
 http://www.tuicool.com/articles/QNZRjur 
+http://blog.csdn.net/universus/article/details/6211589
+http://blog.csdn.net/evan_man/article/details/51519754 
 
 在启动Activity的流程当中:
 1，ActivityManagerService会创建ActivityRecord由其本身来管理，同时会为这个ActivityRecord创建一个IApplication（本质上就是一个Binder）；
@@ -29,3 +33,5 @@ Binder是虚拟驱动设备，主要完成以下几件事：
 
 操作(binder_ioctl)：将IPC数据作为参数传给Binder Driver
 
+http://gityuan.com/2015/10/31/binder-prepare/ 
+http://gityuan.com/2016/09/04/binder-start-service/

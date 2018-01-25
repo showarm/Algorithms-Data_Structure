@@ -27,6 +27,7 @@ Glide用到了大量的抽象工厂类
 
 ## LruCache + DiskLruCache
 http://blog.csdn.net/boyupeng/article/details/47127605
+http://www.cnblogs.com/zyw-205520/p/4997863.html 
 
 
 ## Bitmap 
