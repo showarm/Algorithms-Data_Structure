@@ -89,8 +89,6 @@ Map<K,V>
 * fail-fast： HashMap不是线程安全的，因此如果在使用迭代器的过程中有其他线程修改了map（除了iterator的remove），将抛出ConcurrentModificationException。
 * put非null元素后get出来的却是null。原因：HashMap初始化的时候是有Capacity的，一个线程去put,如果超过容量则会重现rehash，那就会数组复制，正在复制的时候，一个线程去get 。void transfer(Entry[] newTable)：src[j] = null;，所以可能get到null。 http://www.importnew.com/19196.html  
 
-
-
 ```
 
 public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable {

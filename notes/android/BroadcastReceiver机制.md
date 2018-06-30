@@ -1,0 +1,2 @@
+一直好奇BroadcastReceiver的实现原理，
+进程级的EventBus

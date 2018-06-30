@@ -56,7 +56,6 @@ public class BinarySearch {
             else //find the target
                 return mid;
         }
-        //the array does not contain the target
         return -1;
     }
 

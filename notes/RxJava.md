@@ -3,6 +3,7 @@ Observable (被观察者)、 Observer (观察者)、 OnSubscribe (订阅事件)
 响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它们是流动的。你可以“过滤”(filter)一条河，你可以“转换”(transform)一条河，你可以将两条河合并(combine)成一个，然后依然畅流如初。最后，它就成了你想要的那条河。
 “Be Water，my friend”            --Bruce Lee
 
+https://github.com/jhusain/learnrxjava 
 http://rxmarbles.com/#distinct 
 1 operators分类：创建／转换／过滤／合并／错误处理／辅助／条件／算术／异步／连接／阻塞／字符串。。。
 2 5种调度器Schedulers
