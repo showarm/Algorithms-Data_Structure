@@ -51,7 +51,7 @@ public static void loop() {
 // 4 handleMessage(Message msg)
 ```
 
-单线程模型里，Handler MessageQueue才有意义嘛，否则，同步 死锁 问题。
+Android的更新UI机制设计为单线程模型，否则，可能会在MessageQueue发生同步死锁等问题。
 
 2 Android子线程真的不能更新UI么
 http://www.cnblogs.com/lao-liang/p/5108745.html
@@ -90,3 +90,5 @@ button.setOnClickListener(new View.OnClickListener() {
 ```
 
 ## HandlerThread
+
+内部调了 Looper.prepare(); 的线程

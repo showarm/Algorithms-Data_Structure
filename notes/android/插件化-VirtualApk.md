@@ -8,7 +8,7 @@ https://github.com/didi/VirtualAPK
 
 https://www.jianshu.com/p/56e8465677d7 
 
-1 主工程初始化：hook AMS  hook Instrumentation  
+1 主工程初始化： 动态代理AMS  hook Instrumentation  
 ```
 // hook系统AMS（其实是它在客户端的代理），用动态代理替换成自己的 new ActivityManagerProxy
 public static IActivityManager newInstance(PluginManager pluginManager, IActivityManager activityManager) {
@@ -61,7 +61,7 @@ private void hookAMSForO() {
     }
 ```
 
-2 加载插件工程
+2 ClassLoader加载插件包
 
 初始化插件构造器 LoadedPlugin(PluginManager pluginManager, Context context, File apk)
     这一步干了很多事：
@@ -95,7 +95,7 @@ private static ClassLoader createClassLoader(Context context, File apk, File lib
 VAInstrumentation#newApplication(this.mClassLoader, appClass, this.getPluginContext());
 这里的classLoader是 DexClassLoader
 
-3 启动Activity
+3 启动插件Activity
     1 在宿主工程的 AndroidManifest.xml 中注册一些坑位
     ```
 <application>
@@ -113,7 +113,7 @@ VAInstrumentation#newApplication(this.mClassLoader, appClass, this.getPluginCont
 
     2 之前我们hook掉系统的 Instrumentation,所以在启动Activity的时候会调用到 VAInstrumentation#execStartActivity()
     ```
-    // 告诉系统说要启动的插件Activity已注册
+    // 给插件Activity匹配坑位（根据启动模式/window样式）
 public ActivityResult execStartActivity(
             Context who, IBinder contextThread, IBinder token, Activity target,
             Intent intent, int requestCode, Bundle options) {

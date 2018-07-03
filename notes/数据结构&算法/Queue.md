@@ -42,6 +42,33 @@ public class CachePool {
     }
 }
 
+public class CachePool {
+    public static final int TOP_SIZE = 100;
+    private PriorityQueue<Integer> cachePool = new PriorityQueue();
+
+    public void in(int i){
+        sync(Pool.class){
+            while(cachePool.size >= TOP_SIZE){
+                wait();
+            }
+            list.push(i);
+            notify();
+        }
+    }
+
+    public int out(){
+        int result = -1;
+        sync(Pool.class){
+            while(cachePool.size == 0){
+                wait();
+            }
+            result = list.pop(0);
+            notify();
+        }
+        return result;
+    }
+}
+
 2 PriorityQueue
 
 优先级队列实现大顶堆

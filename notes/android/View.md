@@ -229,8 +229,8 @@ draw(Canvas canvas)／／参数是父View传入，View就在这个canvas画布�
 6 onKeyUp／／通过实体键点击View
 7 onTrackballEvent／／通过轨迹球操作View
 
-8 onTouchEvent(MotionEvent event)／／参数是动作事件（(mouse, pen, finger, trackball)），一般是触摸事件，来自dispatchTouchEvent，
-父View的dispatchTouchEvent(MotionEvent event)调用子View的dispatchTouchEvent(MotionEvent event) 走到onTouchEvent
+#### 8 onTouchEvent(MotionEvent event)
+／／参数是动作事件（(mouse, pen, finger, trackball)），一般是触摸事件，来自dispatchTouchEvent，
 
 相关监听器
 OnClickListener／OnLongClickListener 这都是从onTouchEvent动作中检测出来的，mPendingCheckForTap
@@ -377,4 +377,3 @@ LinearLayout对比RelativeLayout？
 
 2.RelativeLayout的子View如果高度和RelativeLayout不同，则会引发效率问题，当子View很复杂时，这个问题会更加严重。如果可以，尽量使用padding代替margin。 3.在不影响层级深度的情况下,使用LinearLayout和FrameLayout而不是RelativeLayout。 最后再思考一下文章开头那个矛盾的问题，为什么Google给开发者默认新建了个RelativeLayout，而自己却在DecorView中用了个LinearLayout。因为DecorView的层级深度是已知而且固定的，上面一个标题栏，下面一个内容栏。采用RelativeLayout并不会降低层级深度，所以此时在根节点上用LinearLayout是效率最高的。而之所以给开发者默认新建了个RelativeLayout是希望开发者能采用尽量少的View层级来表达布局以实现性能最优，因为复杂的View嵌套对性能的影响会更大一些。
 
-﻿
