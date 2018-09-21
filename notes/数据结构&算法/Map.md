@@ -119,7 +119,7 @@ public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneabl
 
 #### HashMap子类及应用
 
-* java.util.LinkedHashMap  
+* java.util.LinkedHashMap  有序
 
 ```
 class LinkedHashMap<K,V>

@@ -1,5 +1,3 @@
-
-
 ## LruCache + DiskLruCache
 http://blog.csdn.net/boyupeng/article/details/47127605
 http://www.cnblogs.com/zyw-205520/p/4997863.html   volley三级

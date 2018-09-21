@@ -10,7 +10,7 @@ https://www.jianshu.com/p/56e8465677d7
 
 1 主工程初始化： 动态代理AMS  hook Instrumentation  
 ```
-// hook系统AMS（其实是它在客户端的代理），用动态代理替换成自己的 new ActivityManagerProxy
+// 动态代理AMS（其实是它在客户端的代理），为startService做文章
 public static IActivityManager newInstance(PluginManager pluginManager, IActivityManager activityManager) {
         return (IActivityManager) Proxy.newProxyInstance(activityManager.getClass().getClassLoader(), new Class[] { IActivityManager.class }, new ActivityManagerProxy(pluginManager, activityManager));
     }
@@ -24,7 +24,8 @@ private void hookAMSForO() {
         }
     }
 
-// hook ActivityThread，In是AT的一个属性，进而得到Instrumentation
+// hook Instrumentation,为启动Activity做文章
+// In是AT的一个属性，进而得到Instrumentation
 @UiThread
     public static Object getActivityThread(Context base) {
         if (sActivityThread == null) {

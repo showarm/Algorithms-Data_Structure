@@ -51,3 +51,6 @@ Throwable派生出两大类：Error和Exception。
 Error是程序中的严重错误，不应该用try…catch
 
 Exception分两类：Checked Exception和Unchecked Exception(RuntimeException)。
+
+
+https://blog.csdn.net/zhangjg_blog/article/details/16116613#t1 Java中的数组是对象吗？

@@ -193,3 +193,45 @@ http://www.tuicool.com/articles/3eiM3aI  利用 OkHttp Interceptor 模拟数据
 11 复用连接池  
 StreamAllocation.java
 
+12 DNS模块
+
+1、基本原理：
+OkHttp支持设置自定义dns，重写lookUp方法，返回正确的ip地址列表。
+
+public List<InetAddress> lookup(String hostname) throws UnknownHostException
+dns服务商有本地dns服务（默认服务）和网络dns服务（补充服务，如百度dns）。
+
+本地dns服务可能会被运营商劫持导致返回错误的ip，我们需要把本地dns服务和网络dns服务做一个merge，以尽可能的保证服务的稳定性。
+
+2、网络dns
+网络dns，如百度dns会返回域名对应的ip列表，http://180.76.76.112/?dn=www.baidu.com
+
+因为lookUp方法会被频繁调用，为了防止频繁访问网络，需要加一层数据缓存。
+
+3、数据merge
+数据合法性校验：网络dns服务一般返回一个字符串，所以需要对数据合法性做校验，判断是否是IPV4&IPV6地址。
+
+参考 InetAddressValidator.java 进行数据合法性校验。
+
+生成正确的InetAddress：网络在Https协议下必须通过域名访问，在生成InetAddress的时候必须包含域名。
+
+InetAddress addressWithoutHost = InetAddress.getByName(ip);
+if (addressWithoutHost != null) {
+    //非常重要：为InetAddress添加host
+ InetAddress address = InetAddress.getByAddress(host,
+ addressWithoutHost.getAddress());
+}
+数据merge：将本地dns服务返回的数据与网络dns服务返回的数据进行去重。
+
+4、路由选择
+由于OkHttp具备路由选择的功能，所以DNS服务没必要花太多精力到路由选择上，只需做好本职工作，返回正确的ip列表即可，OkHttp会挨个试直到找到可用的ip。
+
+OkHttp通过RouteSelector&RouteDatabase进行路由选择，总共干3件事情：1.收集所有可用的路由，2.依次选择可用的路由，3.维护连接失败的路由。
+
+如果有连接成功的路由，则下次复用该路由，如果有连接失败的路由，则加入RouteDatabase中。
+
+5、手机连接代理
+手机连接代理时，lookUp方法的hostName是一个ip地址，因为HtppDns的作用是域名解析，所以当域名为ip的时候，无需做处理，使用本地dns即可。
+
+ 
+

@@ -1,0 +1,2 @@
+
+从Handler角度讲，Handler处理生命周期指令造就了Activity的生命周期。
