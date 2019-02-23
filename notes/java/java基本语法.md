@@ -1,20 +1,14 @@
+
+
+
+
+
 https://github.com/Mr-YangCheng/ForAndroidInterview/tree/master/java
 https://github.com/francistao/LearningNotes/tree/master/Part1/Android
 https://github.com/singwhatiwanna/android-art-res
 https://github.com/YoungPeanut/ApiDemos
 https://www.jianshu.com/u/f9fbc7a39b36
 http://blog.csdn.net/harvic880925/article/details/50995268
-
-# Object的8个方法
- 为什么重写equals方法必须也重写hashCode方法？
-== 比较对象的地址
-
-equals计较对象的内容，是判断两个对象相等的标尺。
-
-两个对象相等 <=>  equals()相等  => hashCode()相等   为了满足这个约定，必须也重写hashCode()
-
-hasCode()不相等 => equals（）不相等 <=> 两个对象不相等
-
 
 * 接口 抽象类  内部类 的对比  
 

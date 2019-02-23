@@ -101,6 +101,15 @@ Retrofit.create(final Class<T>service);//
         每个类都是Class的范性
 
         service必须是接口，不能有继承
+        Caused by: java.lang.IllegalArgumentException: API interfaces must not extend other interfaces.
+              at retrofit2.Utils.validateServiceInterface(Utils.java:64)
+              at retrofit2.Retrofit.create(Retrofit.java:128)
+              at io.github.youngpeanut.libnetwork.ApiFactory.getMyApi(ApiFactory.java:28)
+              at com.eunut.xiaoanbao.App.getApiXiaoanbao1(App.java:331)
+              at com.eunut.xiaoanbao.LoadingActivity.reqGuideImg(LoadingActivity.java:146)
+              at com.eunut.xiaoanbao.LoadingActivity.processLogic(LoadingActivity.java:104)
+              at com.eunut.xiaoanbao.init.BaseActivity.initView(BaseActivity.java:92)
+              at com.eunut.xiaoanbao.init.BaseActivity.onCreate(BaseActivity.java:41)
 
 @GET("/api/4/news/latest")
 
